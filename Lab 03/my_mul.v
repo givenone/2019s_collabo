@@ -26,7 +26,7 @@ module my_mul #(
 (
     input [BITWIDTH-1:0] ain,
     input [BITWIDTH-1:0] bin,
-    input [2*BITWIDTH-1:0] dout
+    output [2*BITWIDTH-1:0] dout
 );
 /* IMPLEMENT HERE! */    
 assign dout = ain * bin;
