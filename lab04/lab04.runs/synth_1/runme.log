@@ -1,0 +1,329 @@
+
+*** Running vivado
+    with args -log xbip_multadd_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source xbip_multadd_0.tcl
+
+
+****** Vivado v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source xbip_multadd_0.tcl -notrace
+Command: synth_design -top xbip_multadd_0 -part xc7z020clg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 22692 
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 387.074 ; gain = 100.313
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'xbip_multadd_0' [c:/Users/141216LGNOTEbook/Mirror/2020-1/lab04/lab04.srcs/sources_1/ip/xbip_multadd_0/synth/xbip_multadd_0.vhd:73]
+	Parameter C_VERBOSITY bound to: 0 - type: integer 
+	Parameter C_XDEVICEFAMILY bound to: zynq - type: string 
+	Parameter C_A_WIDTH bound to: 32 - type: integer 
+	Parameter C_B_WIDTH bound to: 32 - type: integer 
+	Parameter C_C_WIDTH bound to: 32 - type: integer 
+	Parameter C_A_TYPE bound to: 1 - type: integer 
+	Parameter C_B_TYPE bound to: 1 - type: integer 
+	Parameter C_C_TYPE bound to: 1 - type: integer 
+	Parameter C_CE_OVERRIDES_SCLR bound to: 0 - type: integer 
+	Parameter C_AB_LATENCY bound to: -1 - type: integer 
+	Parameter C_C_LATENCY bound to: -1 - type: integer 
+	Parameter C_OUT_HIGH bound to: 32 - type: integer 
+	Parameter C_OUT_LOW bound to: 0 - type: integer 
+	Parameter C_USE_PCIN bound to: 0 - type: integer 
+	Parameter C_TEST_CORE bound to: 0 - type: integer 
+INFO: [Synth 8-3491] module 'xbip_multadd_v3_0_13' declared at 'c:/Users/141216LGNOTEbook/Mirror/2020-1/lab04/lab04.srcs/sources_1/ip/xbip_multadd_0/hdl/xbip_multadd_v3_0_vh_rfs.vhd:2155' bound to instance 'U0' of component 'xbip_multadd_v3_0_13' [c:/Users/141216LGNOTEbook/Mirror/2020-1/lab04/lab04.srcs/sources_1/ip/xbip_multadd_0/synth/xbip_multadd_0.vhd:134]
+INFO: [Synth 8-256] done synthesizing module 'xbip_multadd_0' (7#1) [c:/Users/141216LGNOTEbook/Mirror/2020-1/lab04/lab04.srcs/sources_1/ip/xbip_multadd_0/synth/xbip_multadd_0.vhd:73]
+WARNING: [Synth 8-3331] design delay_line__parameterized6 has unconnected port CLK
+WARNING: [Synth 8-3331] design delay_line__parameterized6 has unconnected port CE
+WARNING: [Synth 8-3331] design delay_line__parameterized6 has unconnected port SCLR
+WARNING: [Synth 8-3331] design delay_line has unconnected port CLK
+WARNING: [Synth 8-3331] design delay_line has unconnected port CE
+WARNING: [Synth 8-3331] design delay_line has unconnected port SCLR
+WARNING: [Synth 8-3331] design delay_line__parameterized0 has unconnected port CLK
+WARNING: [Synth 8-3331] design delay_line__parameterized0 has unconnected port CE
+WARNING: [Synth 8-3331] design delay_line__parameterized0 has unconnected port SCLR
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[24]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[23]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[22]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[21]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[20]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[19]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[18]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[17]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[16]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[15]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[14]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[13]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[12]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[11]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[10]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[9]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[8]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[7]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[6]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[5]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[4]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[3]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[2]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[1]
+WARNING: [Synth 8-3331] design dsp has unconnected port D_PORT[0]
+WARNING: [Synth 8-3331] design dsp has unconnected port CARRY_IN
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[47]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[46]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[45]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[44]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[43]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[42]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[41]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[40]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[39]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[38]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[37]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[36]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[35]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[34]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[33]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[32]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[31]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[30]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[29]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[28]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[27]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[26]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[25]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[24]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[23]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[22]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[21]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[20]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[19]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[18]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[17]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[16]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[15]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[14]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[13]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[12]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[11]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[10]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[9]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[8]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[7]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[6]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[5]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[4]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[3]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[2]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[1]
+WARNING: [Synth 8-3331] design multadd_dsp has unconnected port PCIN[0]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 518.176 ; gain = 231.414
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 518.176 ; gain = 231.414
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 518.176 ; gain = 231.414
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 518.176 ; gain = 231.414
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[47]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[46]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[45]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[44]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[43]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[42]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[41]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[40]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[39]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[38]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[37]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[36]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[35]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[34]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[33]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[32]
+WARNING: [Synth 8-3331] design xbip_multadd_v3_0_13_viv has unconnected port PCIN[31]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 579.184 ; gain = 292.422
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 579.184 ; gain = 292.422
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 588.211 ; gain = 301.449
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 588.211 ; gain = 301.449
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 588.211 ; gain = 301.449
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 588.211 ; gain = 301.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 588.211 ; gain = 301.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 588.211 ; gain = 301.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 588.211 ; gain = 301.449
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     1|
+|2     |DSP48E1 |     3|
+|3     |FDRE    |    86|
+|4     |IBUF    |   100|
+|5     |OBUF    |    81|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 588.211 ; gain = 301.449
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 131 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 588.211 ; gain = 301.449
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 588.211 ; gain = 301.449
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 3 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 701.129 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+13 Infos, 100 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 701.129 ; gain = 420.500
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 701.129 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/141216LGNOTEbook/Mirror/2020-1/lab04/lab04.runs/synth_1/xbip_multadd_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file xbip_multadd_0_utilization_synth.rpt -pb xbip_multadd_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Apr  5 23:57:49 2020...
