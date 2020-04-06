@@ -59,4 +59,3 @@ module tb_muladd;
         .m_axis_result_tdata(res)
     );
 endmodule
-endmodule

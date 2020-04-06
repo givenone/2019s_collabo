@@ -76,8 +76,8 @@ module test_adderarray();
             cmd = i;
             for(j=0; j<=8; j=j+1) begin
                 for(k=0; k<4; k=k+1) begin
-                    ain[k] = $urandom%(2**31);
-                    bin[k] = $urandom%(2**31);
+                    ain[k] = $urandom%(2**32-1);
+                    bin[k] = $urandom%(2**32-1);
                 end
  
                 #10;

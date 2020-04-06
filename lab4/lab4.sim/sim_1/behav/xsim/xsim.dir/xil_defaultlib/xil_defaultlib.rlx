@@ -2,8 +2,10 @@
 2018.3
 Dec  7 2018
 00:33:28
-C:/Users/yeap98/Desktop/4-1/lab/week3/lab4/lab4.sim/sim_1/behav/xsim/glbl.v,1544155481,verilog,,,,glbl,,,,,,,,
-C:/Users/yeap98/Desktop/4-1/lab/week3/lab4/lab4.srcs/sources_1/ip/xbip_multadd_0/sim/xbip_multadd_0.vhd,1585633516,vhdl,,,,xbip_multadd_0,,,,,,,,
-C:/Users/yeap98/Desktop/4-1/lab/week3/lab4/lab4.srcs/sources_1/new/ADDER.v,1585635429,verilog,,C:/Users/yeap98/Desktop/4-1/lab/week3/lab4/lab4.srcs/sources_1/new/ADDER_ARRAY.v,,ADDER,,,,,,,,
-C:/Users/yeap98/Desktop/4-1/lab/week3/lab4/lab4.srcs/sources_1/new/ADDER_ARRAY.v,1585639693,verilog,,,,ADDER_ARRAY;test_adderarray,,,,,,,,
-C:/Users/yeap98/Desktop/4-1/lab/week3/lab4/lab4.srcs/sources_1/new/tb_integer.v,1585634657,verilog,,,,tb_integer,,,,,,,,
+C:/Users/yeap98/Desktop/4-1/lab/lab4/lab4.sim/sim_1/behav/xsim/glbl.v,1544155481,verilog,,,,glbl,,,,,,,,
+C:/Users/yeap98/Desktop/4-1/lab/lab4/lab4.srcs/sources_1/ip/floating_point_0/sim/floating_point_0.vhd,1585633451,vhdl,,,,floating_point_0,,,,,,,,
+C:/Users/yeap98/Desktop/4-1/lab/lab4/lab4.srcs/sources_1/ip/xbip_multadd_0/sim/xbip_multadd_0.vhd,1585633516,vhdl,,,,xbip_multadd_0,,,,,,,,
+C:/Users/yeap98/Desktop/4-1/lab/lab4/lab4.srcs/sources_1/new/ADDER.v,1585635429,verilog,,C:/Users/yeap98/Desktop/4-1/lab/lab4/lab4.srcs/sources_1/new/ADDER_ARRAY.v,,ADDER,,,,,,,,
+C:/Users/yeap98/Desktop/4-1/lab/lab4/lab4.srcs/sources_1/new/ADDER_ARRAY.v,1586151142,verilog,,,,ADDER_ARRAY;test_adderarray,,,,,,,,
+C:/Users/yeap98/Desktop/4-1/lab/lab4/lab4.srcs/sources_1/new/tb.v,1585634014,verilog,,,,tb,,,,,,,,
+C:/Users/yeap98/Desktop/4-1/lab/lab4/lab4.srcs/sources_1/new/tb_integer.v,1585634657,verilog,,,,tb_integer,,,,,,,,
