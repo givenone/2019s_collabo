@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7k70tfbv676-1" LaunchTime="1585923150">
+  <File Type="PA-TCL" Name="floating_point_MAC.tcl"/>
+  <File Type="BITSTR-BMM" Name="floating_point_MAC_bd.bmm"/>
+  <File Type="REPORTS-TCL" Name="floating_point_MAC_reports.tcl"/>
+  <File Type="OPT-DCP" Name="floating_point_MAC_opt.dcp"/>
+  <File Type="OPT-HWDEF" Name="floating_point_MAC.hwdef"/>
+  <File Type="PWROPT-DCP" Name="floating_point_MAC_pwropt.dcp"/>
+  <File Type="PLACE-DCP" Name="floating_point_MAC_placed.dcp"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="floating_point_MAC_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BGN" Name="floating_point_MAC.bgn"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="floating_point_MAC_postplace_pwropt.dcp"/>
+  <File Type="BG-BIN" Name="floating_point_MAC.bin"/>
+  <File Type="PHYSOPT-DCP" Name="floating_point_MAC_physopt.dcp"/>
+  <File Type="BITSTR-MSK" Name="floating_point_MAC.msk"/>
+  <File Type="ROUTE-ERROR-DCP" Name="floating_point_MAC_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="floating_point_MAC_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="floating_point_MAC_routed_bb.dcp"/>
+  <File Type="BITSTR-LTX" Name="floating_point_MAC.ltx"/>
+  <File Type="BITSTR-MMI" Name="floating_point_MAC.mmi"/>
+  <File Type="BITSTR-SYSDEF" Name="floating_point_MAC.sysdef"/>
+  <File Type="ROUTE-TIMING-PB" Name="floating_point_MAC_timing_summary_routed.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="floating_point_MAC_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="floating_point_MAC_postroute_physopt_bb.dcp"/>
+  <File Type="BG-BIT" Name="floating_point_MAC.bit"/>
+  <File Type="BITSTR-RBT" Name="floating_point_MAC.rbt"/>
+  <File Type="BITSTR-NKY" Name="floating_point_MAC.nky"/>
+  <File Type="BG-DRC" Name="floating_point_MAC.drc"/>
+  <File Type="RDI-RDI" Name="floating_point_MAC.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/ip/floating_point_MAC/floating_point_MAC.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/tb_lab4.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="floating_point_MAC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>

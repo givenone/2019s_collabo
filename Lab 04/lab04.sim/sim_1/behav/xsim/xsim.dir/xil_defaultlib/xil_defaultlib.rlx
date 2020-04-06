@@ -1,0 +1,12 @@
+0.6
+2018.3
+Dec  7 2018
+00:33:28
+C:/Users/user/Desktop/lab03/lab03.srcs/sim_1/new/my_add.v,1585500293,verilog,,C:/Users/user/Desktop/lab04/lab04.srcs/sources_1/new/tb_adder_array.v,,my_add,,,,,,,,
+C:/Users/user/Desktop/lab04/lab04.sim/sim_1/behav/xsim/glbl.v,1544155481,verilog,,,,glbl,,,,,,,,
+C:/Users/user/Desktop/lab04/lab04.srcs/sources_1/ip/floating_point_MAC/sim/floating_point_MAC.vhd,1585912515,vhdl,,,,floating_point_mac,,,,,,,,
+C:/Users/user/Desktop/lab04/lab04.srcs/sources_1/ip/xbip_multadd_0/sim/xbip_multadd_0.vhd,1585929875,vhdl,,,,xbip_multadd_0,,,,,,,,
+C:/Users/user/Desktop/lab04/lab04.srcs/sources_1/new/adder_array.v,1586025218,verilog,,C:/Users/user/Desktop/lab03/lab03.srcs/sim_1/new/my_add.v,,adder_array,,,,,,,,
+C:/Users/user/Desktop/lab04/lab04.srcs/sources_1/new/tb_adder_array.v,1586025364,verilog,,,,tb_adder_array,,,,,,,,
+C:/Users/user/Desktop/lab04/lab04.srcs/sources_1/new/tb_lab4.v,1585919571,verilog,,,,tb_lab4,,,,,,,,
+C:/Users/user/Desktop/lab04/lab04.srcs/sources_1/new/tb_lab4_int.v,1585929884,verilog,,,,tb_lab4_int,,,,,,,,
