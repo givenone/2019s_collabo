@@ -39,7 +39,9 @@ parameter L_RAM_SIZE = 6;
             ain = $urandom%(2**31);
             addr = i;
             #160;
-        end       
+        end
+        
+        valid = 0;       
     end
     
     always #5 aclk = ~aclk;

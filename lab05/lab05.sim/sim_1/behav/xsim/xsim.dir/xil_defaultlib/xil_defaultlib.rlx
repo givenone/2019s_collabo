@@ -2,11 +2,11 @@
 2018.3
 Dec  7 2018
 00:33:28
-C:/Users/141216LGNOTEbook/Mirror/2020-1/lab05/lab05.sim/sim_1/behav/xsim/glbl.v,1544155481,verilog,,,,glbl,,,,,,,,
+C:/Users/141216LGNOTEbook/Mirror/2020-1/lab05/lab05.sim/sim_1/behav/xsim/glbl.v,1544155480,verilog,,,,glbl,,,,,,,,
 C:/Users/141216LGNOTEbook/Mirror/2020-1/lab05/lab05.srcs/sim_1/new/tb_bram.v,1586498461,verilog,,,,tb_bram,,,../../../../,,,,,
 C:/Users/141216LGNOTEbook/Mirror/2020-1/lab05/lab05.srcs/sim_1/new/tb_float.v,1586528551,verilog,,,,tb_float,,,../../../../,,,,,
 C:/Users/141216LGNOTEbook/Mirror/2020-1/lab05/lab05.srcs/sim_1/new/tb_pe.v,1586511534,verilog,,,,tb_pe,,,../../../../,,,,,
 C:/Users/141216LGNOTEbook/Mirror/2020-1/lab05/lab05.srcs/sim_1/new/tb_pe2.v,1586530009,verilog,,,,tb_pe2,,,../../../../,,,,,
 C:/Users/141216LGNOTEbook/Mirror/2020-1/lab05/lab05.srcs/sources_1/ip/fused_mul/sim/fused_mul.vhd,1586497792,vhdl,,,,fused_mul,,,,,,,,
 C:/Users/141216LGNOTEbook/Mirror/2020-1/lab05/lab05.srcs/sources_1/new/my_bram.v,1586267578,verilog,,C:/Users/141216LGNOTEbook/Mirror/2020-1/lab05/lab05.srcs/sim_1/new/tb_bram.v,,my_bram,,,../../../../,,,,,
-C:/Users/141216LGNOTEbook/Mirror/2020-1/lab05/lab05.srcs/sources_1/new/my_pe.v,1586529595,verilog,,C:/Users/141216LGNOTEbook/Mirror/2020-1/lab05/lab05.srcs/sim_1/new/tb_pe2.v,,my_pe,,,../../../../,,,,,
+C:/Users/141216LGNOTEbook/Mirror/2020-1/lab05/lab05.srcs/sources_1/new/my_pe.v,1586529594,verilog,,C:/Users/141216LGNOTEbook/Mirror/2020-1/lab05/lab05.srcs/sim_1/new/tb_pe2.v,,my_pe,,,../../../../,,,,,
