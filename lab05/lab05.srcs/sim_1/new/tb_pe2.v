@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 
-module tb_pe2();
+module tb_pe();
 
 parameter L_RAM_SIZE = 6;
 
@@ -14,36 +14,35 @@ parameter L_RAM_SIZE = 6;
     reg valid;
     wire dvalid;
     wire [31:0] dout;
-    
+   
     integer i;
-    
+   
     initial begin
         aclk <= 1;
-        aresetn = 0;
         we = 1;
         valid = 0;
-
+        aresetn = 0;
         #10;
         aresetn = 1;
-        
+       
         for(i = 0; i < 16; i = i + 1) begin
-            din = $urandom%(2**31);
+            din = $urandom%(32'h3f800000);
             addr = i;
             #10;
         end
-        
+       
         valid = 1;
         we = 0;
-        
+       
         for(i = 0; i < 16; i = i + 1) begin
-            ain = $urandom%(2**31);
+            ain = $urandom%(32'h3f800000);
             addr = i;
             #160;
         end
         
-        valid = 0;       
+        valid = 0;      
     end
-    
+   
     always #5 aclk = ~aclk;
 
     my_pe #(6) UUT (

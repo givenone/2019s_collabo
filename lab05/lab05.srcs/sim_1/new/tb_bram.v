@@ -12,7 +12,6 @@ module tb_bram();
 //    reg [3:0] BRAM_WE_SRC;
     reg [31:0] BRAM_WRDATA;
     wire [31:0] BRAM_RDDATA;
-    reg [3:0] BRAM_WE_SRC;
     reg done;
     
     wire [31:0] temp;
@@ -23,11 +22,11 @@ module tb_bram();
         BRAM_CLK <= 1;
         BRAM_RST <= 0;
         done <= 0;
-        #10
+        #6;
         
         for(i=0;i<8192;i=i+1) begin
             BRAM_ADDR = 4*i;
-            #4;
+            #6;
         end
         done = 1;
     end

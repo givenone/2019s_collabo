@@ -21,14 +21,17 @@ module my_bram #(
     
     initial begin
         if(INIT_FILE != "") $readmemh(INIT_FILE, mem);
-        $display("%h",mem[10]);
         wait(done) $writememh(OUT_FILE, mem);
     end
     
     always @(posedge BRAM_CLK or posedge BRAM_RST) begin
-        if(BRAM_RST == 1) BRAM_RDDATA <= 0;
+        BRAM_RDDATA <= dout;
+        if(BRAM_RST == 1) begin
+            dout <= 0;
+            BRAM_RDDATA <= 0;
+        end
         else if(BRAM_EN == 1) begin
-            if(~|BRAM_WE) BRAM_RDDATA <= mem[addr];
+            if(~|BRAM_WE) dout <= mem[addr];
             else begin
                 if(BRAM_WE[0] == 1) mem[addr][8*(0+1)-1:8*0] <= BRAM_WRDATA[8*(0+1)-1:8*0];
                 if(BRAM_WE[1] == 1) mem[addr][8*(1+1)-1:8*1] <= BRAM_WRDATA[8*(1+1)-1:8*1];

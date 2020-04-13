@@ -22,7 +22,7 @@
     reg [31:0] psum;
     reg [31:0] bin;
 
-    always @(posedge aclk or aresetn) begin     
+    always @(posedge aclk or negedge aresetn) begin    
         if(!aresetn) begin
             bin = 0;
             psum = 0;
@@ -31,11 +31,11 @@
         if(we) peram[addr] = din;
         else bin = peram[addr];
     end
-    
+   
     always @(temp) begin
         psum = dvalid ? temp : 0;
     end
-    
+   
     assign dout = psum;
 
     fused_mul mul(
