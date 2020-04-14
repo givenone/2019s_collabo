@@ -2,3 +2,6 @@ Running: xsim.dir/test_adderarray_behav/xsimk.exe -simmode gui -wdb test_adderar
 Design successfully loaded
 Design Loading Memory Usage: 5312 KB (Peak: 5312 KB)
 Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 6000 KB (Peak: 6000 KB)
+Simulation CPU Usage: 15 ms
