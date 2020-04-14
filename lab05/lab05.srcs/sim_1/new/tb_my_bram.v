@@ -42,12 +42,12 @@ module tb_my_bram();
     initial begin
         BRAM_CLK<=1;
         BRAM_RST<=0;
-        done<=0;
+        done=0;
         for(i=0;i<8192;i=i+1) begin
             BRAM_ADDR = i*4;   //only use upper 13 bits
             #4;
         end
-        done<=1;
+        done=1;
     end
     
     always #1 BRAM_CLK = ~BRAM_CLK;

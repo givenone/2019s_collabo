@@ -57,8 +57,6 @@ module my_bram # (
             BRAM_RDDATA <= 0;
         end
         else if (BRAM_EN == 1) begin
-            //if all BRAM_WE == 0
-            //if (BRAM_WE[0] == 0 && BRAM_WE[1] == 0 && BRAM_WE[2] == 0 && BRAM_WE[3] == 0) begin
             if (BRAM_WE == 4'b0000) begin
                 BRAM_RDDATA <= mem[addr];
             end
