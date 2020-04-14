@@ -25,12 +25,12 @@ module my_bram #(
     end
     
     always @(posedge BRAM_CLK or posedge BRAM_RST) begin
-        BRAM_RDDATA <= dout;
         if(BRAM_RST == 1) begin
             dout <= 0;
             BRAM_RDDATA <= 0;
         end
         else if(BRAM_EN == 1) begin
+            BRAM_RDDATA <= dout;
             if(~|BRAM_WE) dout <= mem[addr];
             else begin
                 if(BRAM_WE[0] == 1) mem[addr][8*(0+1)-1:8*0] <= BRAM_WRDATA[8*(0+1)-1:8*0];
