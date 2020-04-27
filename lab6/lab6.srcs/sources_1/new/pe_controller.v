@@ -1,7 +1,8 @@
 `timescale 1ns / 1ps
 
 module pe_controller #(
-        parameter RAM_SIZE = 6
+        parameter VECTOR_SIZE = 16,
+        parameter L_RAM_SIZE = 6
         )
     (
         input start,
@@ -9,107 +10,108 @@ module pe_controller #(
         input areset_n,
         input [31:0] rddata,
         output done,
-        output [RAM_SIZE -1 : 0] raddr,
-        output [31:0] wrdata
+        output [L_RAM_SIZE : 0] raddr, // LRAM * 2, be careful of size
+        output reg [31:0] wrdata
     );
-    reg [2:0] state;
-    reg [4:0] count_load; // 32
-    reg [3:0] count_cal, count_cal_latency;  // 16
-    reg [2:0] count_done; // 5
-    reg count_rst_load, count_rst_cal, count_rst_cal_latency, count_rst_done;
-    parameter 	IDLE = 3'd0, INIT = 3'd1, LOAD = 3'd2, CALC = 3'd3, RES = 3'd4;     
-    
-    reg flag; // state for counter (pe)
     
     // register and wires for pe module !
-    reg [31:0] ain, bin;
-    reg [RAM_SIZE-1:0]  addr;
-    reg we;
-    // integrated valid signal -> for input ready..
-    reg valid;
-    // computation result
-    wire [31:0] cout;
+    wire [31:0] ain, din;
+    wire [L_RAM_SIZE-1:0]  addr;
+    wire we_local;
+    wire valid;
     wire dvalid;
     wire [31:0] dout;
-    always @(posedge aclk or negedge areset_n) begin
-        if(!areset_n) begin
-            state = 0; count_load = 0; count_cal =0; count_cal_latency = 0; count_done = 0;
-            count_rst_load = 0; count_rst_cal = 0; count_rst_cal_latency = 0; count_rst_done = 0;
-            flag = 0;
-        end
-        case (state)
-            LOAD : // load <16 -> local register in pe and load > 16 : peram(global bram)
-            // Do things with rddata, raddr
-            //CALC : //calculation
-            //RES : //     
-        endcase
-    end
-    my_pe #(.L_RAM_SIZE(6)) mac(
-        .aclk(aclk),
-        .aresetn(areset_n),
-        .ain(ain),
-        .din(din),
-        .addr(addr),
-        .we(we),
-        .valid(valid),
-        .dvalid(dvalid),
-        .dout(dout),
-        .cout(cout)
-        );
-       
-    // counter
-    always @(posedge aclk or posedge count_rst_load)
-        if(count_rst_load) count_load <= 0;
-        else count_load <= count_load + 1;
-        
-    // TODO :: how to wait pe cycle ? (one counter++ per one pe latency)   
-    // one for vector, one for latency !
-    always @(posedge aclk or posedge count_rst_cal)
-        if(count_rst_cal) count_cal <= 0;
-        else count_cal <= count_cal + 1;
 
-    always @(posedge aclk or posedge count_rst_cal_latency)
-        if(count_rst_cal_latency) count_cal_latency <= 0;
-        else if(flag) begin
-            count_cal_latency <= count_cal_latency + 1;
-            count_rst_cal = 1; 
-        end
-
-    always @(posedge aclk or posedge count_rst_done)
-        if(count_rst_done) count_done <= 0;
-        else count_done <= count_done + 1;
-   
-   
-    // evaluate output
-
-   always @(*)
-        if(state == CALC && count_cal == 15) begin
-            flag = 1;
-        end
-        else if(state == CALC && count_cal != 15) begin
-            flag = 0;
-            count_rst_cal = 0;
-        end
-        else begin
-            flag = 0;
-            count_rst_cal = 1;
-        end
-        
+    // global mem
+    wire we_global;
+    reg [31:0] gout;
+    (* ram_style = "block" *) reg [31:0] peram [0: VECTOR_SIZE - 1];  // global register
+    always @(posedge aclk)
+        if(we_global) peram[addr] <= rddata;
+        else gout <= peram[addr];    
+    
+    // FSM
+    parameter 	IDLE = 3'd0, INIT = 3'd1, LOAD = 3'd2, CALC = 3'd3, DONE = 3'd4;        
+    wire load_done;
+    wire calc_done;
+    wire done_done;
+    reg [2:0] present_state, next_state;
+    
+    // state shift
+    always @(posedge aclk)
+        if(!areset_n) present_state <= IDLE; else present_state <= next_state;    
+    
+    // state update
     always @(*)
-        case (state)
-            CALC : count_rst_cal_latency = 0;
-            default : count_rst_cal_latency = 1;
-        endcase
-
-    always @(*)
-        case (state)
-            LOAD : count_rst_load = 0;
-            default : count_rst_load = 1;
+        case(present_state)
+            IDLE : if(start) next_state = LOAD; else next_state = present_state;
+            LOAD : if(load_done) next_state = CALC; else next_state = present_state;
+            CALC : if(calc_done) next_state = DONE ; else next_state = present_state;
+            DONE : if(done_done) next_state = IDLE; else next_state = present_state;
         endcase
     
-    always @(*)
-        case (state)
-            RES : count_rst_done = 0;
-            default : count_rst_done = 1;
-        endcase
+    // COUNTER -> implement only one counter ! -> zero is done.
+            
+    localparam count_load = 2 * 2 * VECTOR_SIZE - 1; // 
+    localparam count_cal = VECTOR_SIZE - 1;  // 16
+    localparam count_done = 5; // 5
+    reg [31:0] counter;
+    wire [31:0] counter_val = (present_state == LOAD) ? count_load 
+    : (present_state == CALC) ?  count_cal 
+    : (present_state == DONE) ? count_done 
+    : 0;
+    
+    wire counter_start =  start || load_done || calc_done;
+    wire counter_down = (present_state == LOAD) || dvalid || (present_state == DONE);
+    always @(posedge aclk) begin
+        if(!areset_n) counter <= 'd0;
+        else 
+            if(counter_start) counter <= counter_val;
+            else if(counter_down) counter <= counter-1;
+    end
+
+            
+    assign load_done = (present_state == LOAD) && (counter == 'd0);
+    assign calc_done = (present_state == CALC) && (counter == 'd0) && dvalid;
+    assign done_done = (present_state == DONE) && (counter == 'd0);
+    assign done = done_done;
+    
+    // internal registers
+    // 1) LOAD - global/local register -> we / addr setting, raddr, din
+    assign we_local = ((present_state == LOAD) && counter[L_RAM_SIZE+1] && !counter[0]) ? 1'd1 : 1'd0;
+    assign we_global = ((present_state == LOAD) && !counter[L_RAM_SIZE+1] && !counter[0]) ? 1'd1 : 1'd0;
+    // ** IMPORTANT : LOAD : one cycle for read data , one cycle for write data. 
+    // if counter[0] == 0 -> read && counter[0] == 1 -> write
+    
+    assign addr = (present_state == LOAD) ? counter[L_RAM_SIZE:1] : // applicable for both global, local RAM
+    (present_state == CALC) ? counter[L_RAM_SIZE-1:0] : 1'd0;
+    
+    // raddr : address for 2 RAMs
+    assign raddr = (present_state == LOAD) ? counter[L_RAM_SIZE+1:1] : 1'd0;
+    // din
+    assign din = (present_state == LOAD) ? rddata : 1'd0;
+    
+    // 2) CALC
+    assign ain = (present_state == CALC) ? gout : 1'd0;
+    assign valid = (present_state == CALC) ? 1'd1 : 1'd0;
+    
+    // 3) DONE
+    always @(posedge aclk)
+        if (!areset_n)
+                wrdata <= 'd0;
+        else
+            if (calc_done) wrdata <= dout;
+            else wrdata <= wrdata;
+            
+    my_pe #(.L_RAM_SIZE(6)) mac(
+    .aclk(aclk),
+    .aresetn(areset_n),
+    .ain(ain),
+    .din(din),
+    .addr(addr),
+    .we(we_local),
+    .valid(valid),
+    .dvalid(dvalid),
+    .dout(dout)
+    );
 endmodule
