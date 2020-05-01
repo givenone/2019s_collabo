@@ -1,7 +1,7 @@
 module tb_pecontroller();
 parameter L_RAM_SIZE = 4;
 
-parameter CLK_PERIOD = 10;
+parameter CLK_PERIOD = 2;
 
 reg aclk;
 reg aresetn;
