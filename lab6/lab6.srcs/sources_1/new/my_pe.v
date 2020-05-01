@@ -37,7 +37,7 @@ module my_pe #(
         else weight = peram[addr];
     end
     
-    always @(cout) begin
+    always @(*) begin
         psum = dvalid ? cout : 0;
     end
     

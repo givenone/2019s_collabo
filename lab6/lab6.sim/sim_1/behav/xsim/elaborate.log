@@ -3,7 +3,6 @@ Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
 Running: C:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 62abaf12a2284d49a60d33fdaba30512 --incr --debug typical --relax --mt 2 -L xbip_utils_v3_0_9 -L axi_utils_v2_0_5 -L xbip_pipe_v3_0_5 -L xbip_dsp48_wrapper_v3_0_4 -L xbip_dsp48_addsub_v3_0_5 -L xbip_dsp48_multadd_v3_0_5 -L xbip_bram18k_v3_0_5 -L mult_gen_v12_0_14 -L floating_point_v7_1_7 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_pecontroller_behav xil_defaultlib.tb_pecontroller xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
-WARNING: [VRFC 10-3091] actual bit length 4 differs from formal bit length 6 for port 'addr' [C:/Users/yeap98/Desktop/4-1/lab/lab6/lab6.srcs/sources_1/new/pe_controller.v:124]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
@@ -224,7 +223,7 @@ Compiling architecture rtl of entity floating_point_v7_1_7.delay [\delay(width=3
 Compiling architecture xilinx of entity floating_point_v7_1_7.floating_point_v7_1_7_viv [\floating_point_v7_1_7_viv(c_xde...]
 Compiling architecture xilinx of entity floating_point_v7_1_7.floating_point_v7_1_7 [\floating_point_v7_1_7(c_xdevice...]
 Compiling architecture floating_point_0_arch of entity xil_defaultlib.floating_point_0 [floating_point_0_default]
-Compiling module xil_defaultlib.my_pe
+Compiling module xil_defaultlib.my_pe(L_RAM_SIZE=4)
 Compiling module xil_defaultlib.pe_controller(L_RAM_SIZE=4)
 Compiling module xil_defaultlib.tb_pecontroller
 Compiling module xil_defaultlib.glbl
