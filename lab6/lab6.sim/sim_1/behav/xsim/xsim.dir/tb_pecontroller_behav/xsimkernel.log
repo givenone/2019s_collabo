@@ -1,0 +1,7 @@
+Running: xsim.dir/tb_pecontroller_behav/xsimk.exe -simmode gui -wdb tb_pecontroller_behav.wdb -simrunnum 0 -socket 52756
+Design successfully loaded
+Design Loading Memory Usage: 7256 KB (Peak: 7256 KB)
+Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 8900 KB (Peak: 8900 KB)
+Simulation CPU Usage: 31 ms

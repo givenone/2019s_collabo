@@ -14,7 +14,7 @@ reg [31:0] din_mem [2**(L_RAM_SIZE+1)-1:0];
 
 integer i;
 initial begin
-    aclk <= 0;
+    aclk <= 1;
     start <= 0;
     aresetn <= 1;
     
@@ -39,7 +39,6 @@ always @(posedge aclk)
     din <= din_mem[rdaddr];
 
 always #(CLK_PERIOD/2) aclk = ~aclk;
-
 
 pe_controller #(2**L_RAM_SIZE,L_RAM_SIZE) UUT(
     .start(start),

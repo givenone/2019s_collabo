@@ -11,9 +11,9 @@ module pe_controller #(
         input [31:0] rddata,
         output done,
         output [L_RAM_SIZE : 0] raddr, // LRAM * 2, be careful of size
-        output reg [31:0] wrdata
+        output [31:0] wrdata
     );
-    
+
     // register and wires for pe module !
     wire [31:0] ain, din;
     wire [L_RAM_SIZE-1:0]  addr;
@@ -51,7 +51,7 @@ module pe_controller #(
     // COUNTER -> implement only one counter ! -> zero is done.
             
     localparam count_load = 2 * 2 * VECTOR_SIZE - 1; // 2 for memory load, 2 for global & local ram
-    localparam count_cal = VECTOR_SIZE * VECTOR_SIZE - 1;  // 16
+    localparam count_cal = VECTOR_SIZE * 16 - 1;  // 16
     localparam count_done = 5; // 5
     reg [31:0] counter;
 
@@ -75,6 +75,8 @@ module pe_controller #(
     assign done_done = (present_state == DONE) && (counter == 'd0);
     assign done = (present_state == DONE);
     
+
+    
     // internal registers
     // 1) LOAD - global/local register -> we / addr setting, raddr, din
     assign we_local = ((present_state == LOAD) && counter[L_RAM_SIZE+1]) ? 1'd1 : 1'd0;
@@ -95,12 +97,7 @@ module pe_controller #(
     assign valid = (present_state == CALC) ? 1'd1 : 1'd0;
     
     // 3) DONE
-    always @(posedge aclk)
-        if (!areset_n)
-                wrdata <= 'd0;
-        else
-            if (done) wrdata <= dout;
-            else wrdata <= wrdata;
+    assign wrdata = (done) ? dout : 'd0;
             
     my_pe #(.L_RAM_SIZE(L_RAM_SIZE)) mac(
     .aclk(aclk),
@@ -113,4 +110,5 @@ module pe_controller #(
     .dvalid(dvalid),
     .dout(dout)
     );
+   
 endmodule
