@@ -11,10 +11,11 @@ module pe_controller #(
         input areset_n,
         input [31:0] rddata,
         output done,
+        output write,
         output [L_RAM_SIZE : 0] raddr, // LRAM * 2, be careful of size
-        output [31:0] wrdata [0 : MATRIX_SIZE - 1]
+        output [31:0] wrdata
     );
-
+    
     // register and wires for pe module !
     wire [31:0] din;
     wire [31:0] ain [0 : MATRIX_SIZE-1];
@@ -23,19 +24,22 @@ module pe_controller #(
     wire valid;
     wire dvalid;
     wire [31:0] dout [0 : MATRIX_SIZE-1];
+    
+    wire [31:0] answer [0 : MATRIX_SIZE - 1];
 
     // global mem
     wire we_global;
-    wire index;
+    wire [L_RAM_SIZE : 0] index;
     (* ram_style = "block" *) reg [31:0] peram [0 : MATRIX_SIZE-1] [0: VECTOR_SIZE - 1];  // global register
     always @(posedge aclk)
         if(we_global) peram[index][addr] <= rddata;
     
     // FSM
-    parameter 	IDLE = 3'd0, INIT = 3'd1, LOAD = 3'd2, CALC = 3'd3, DONE = 3'd4;        
+    parameter 	IDLE = 3'd0, WRITE = 3'd1, LOAD = 3'd2, CALC = 3'd3, DONE = 3'd4;        
     wire load_done;
     wire calc_done;
     wire done_done;
+    wire write_done;
     reg [2:0] present_state, next_state;
     
     // state shift
@@ -47,7 +51,8 @@ module pe_controller #(
         case(present_state)
             IDLE : if(start) next_state = LOAD; else next_state = present_state;
             LOAD : if(load_done) next_state = CALC; else next_state = present_state;
-            CALC : if(calc_done) next_state = DONE ; else next_state = present_state;
+            CALC : if(calc_done) next_state = WRITE ; else next_state = present_state;
+            WRITE : if(write_done) next_state = DONE ; else next_state = present_state;
             DONE : if(done_done) next_state = IDLE; else next_state = present_state;
         endcase
     
@@ -55,15 +60,17 @@ module pe_controller #(
             
     localparam count_load = 2 * (MATRIX_SIZE + 1) * VECTOR_SIZE - 1; // 2 for memory load, M * V + V
     localparam count_cal = VECTOR_SIZE * 16 - 1;  // 16 : ip latency
+    localparam count_write = MATRIX_SIZE - 1 ; // 1 buffer for storing data.
     localparam count_done = 5; // 5
     reg [31:0] counter;
     wire [31:0] counter_val = (next_state == LOAD) ? count_load 
-    : (next_state == CALC) ?  count_cal 
+    : (next_state == CALC) ?  count_cal
+    : (next_state == WRITE) ? count_write 
     : (next_state == DONE) ? count_done 
     : 0;
     
-    wire counter_start =  start || load_done || calc_done;
-    wire counter_down = (present_state == LOAD) || (present_state == CALC) || (present_state == DONE);
+    wire counter_start =  start || load_done || calc_done || write_done;
+    wire counter_down = (present_state == LOAD) || (present_state == CALC) || (present_state == WRITE) ||  (present_state == DONE);
     always @(posedge aclk) begin
         if(!areset_n) counter <= 'd0;
         else 
@@ -73,14 +80,17 @@ module pe_controller #(
             
     assign load_done = (present_state == LOAD) && (counter == 'd0);
     assign calc_done = (present_state == CALC) && (counter == 'd0) && dvalid;
+    assign write_done = (present_state == WRITE) && (counter == 'd0);
     assign done_done = (present_state == DONE) && (counter == 'd0);
     assign done = (present_state == DONE);
+    assign write = (present_state == WRITE);
     
     
     // internal registers
     // 1) LOAD - global/local register -> we / addr setting, raddr, din
-    assign we_local = ((present_state == LOAD) && counter >= (count_load - 2 * VECTOR_SIZE) ) ? 1'd1 : 1'd0; // first row
-    assign we_global = ((present_state == LOAD) && counter < (count_load - 2 * VECTOR_SIZE)) ? 1'd1 : 1'd0;  // second - last row
+    // ** caution forequality
+    assign we_local = ((present_state == LOAD) && counter > (count_load - 2 * VECTOR_SIZE) ) ? 1'd1 : 1'd0; // first row
+    assign we_global = ((present_state == LOAD) && counter <= (count_load - 2 * VECTOR_SIZE)) ? 1'd1 : 1'd0;  // second - last row
     
     // ** IMPORTANT : LOAD : one cycle for read data , one cycle for write data. 
     // if counter[0] == 0 -> read && counter[0] == 1 -> write
@@ -89,11 +99,12 @@ module pe_controller #(
     (present_state == CALC) ? counter / VECTOR_SIZE : 1'd0; //counter[31:4] : 1'd0;
     // addr only indicate address among vecotor
     
-    assign index = (present_state == LOAD) ? counter[L_RAM_SIZE:1] / VECTOR_SIZE :1'd0;
+    assign index = (present_state == LOAD) ? counter[L_RAM_SIZE:1] / VECTOR_SIZE :
+    (present_state == WRITE) ? counter[L_RAM_SIZE-1 : 0] : 1'd0;
     // index of pe module (matrix row)
     
     // raddr : address for 2 RAMs
-    assign raddr = (present_state == LOAD) ? counter[L_RAM_SIZE+1:1] : 1'd0; // not that important
+    assign raddr = (present_state == LOAD) ? (MATRIX_SIZE + 1) * VECTOR_SIZE - 1 - counter[31:1] : 1'd0; // indicate address. just din in real situation.
     // din
     
     assign din = (present_state == LOAD) ? rddata : 1'd0;
@@ -108,16 +119,19 @@ module pe_controller #(
 
     assign valid = (present_state == CALC) ? 1'd1 : 1'd0;
     
-    // 3) DONE
-    //assign wrdata = (done) ? dout : 'd0;
+    // 3) WRITE
+    // assign to wrdata sequentially.
 
     genvar j;        
     generate        
         for (j = 0; j < MATRIX_SIZE ; j=j+1)         
-          assign wrdata[j] = (done) ? dout[j] : 'd0;       
+          assign answer[j] = (dvalid) ? dout[j] : answer[j];       
     endgenerate
-        
     
+    assign wrdata = (present_state == WRITE) ? answer[index] : 1'd0;
+        
+    // 4) DONE
+    //assign wrdata = (done) ? dout : 'd0;
     genvar k;
     generate 
         for(k = 0; k < MATRIX_SIZE; k=k+1) begin
@@ -148,5 +162,6 @@ module pe_controller #(
     .dout(dout)
     );
     */
-   
+
+       
 endmodule

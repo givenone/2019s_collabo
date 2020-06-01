@@ -1,6 +1,8 @@
 module tb();
 
-parameter L_RAM_SIZE = 4;
+parameter L_RAM_SIZE = 6;
+parameter VECTOR_SIZE = 16;
+parameter MATRIX_SIZE = 4;
 parameter CLK_PERIOD = 2;
 
 reg aclk;
@@ -8,10 +10,11 @@ reg aresetn;
 reg start;
 reg [31:0] din;
 wire done;
+wire write;
 wire [L_RAM_SIZE:0] rdaddr;
 wire [31:0] wrdata;
 //input data 
-reg [31:0] din_mem [2**(L_RAM_SIZE+1)-1:0];
+reg [31:0] din_mem [(MATRIX_SIZE+1) * VECTOR_SIZE -1:0];
 
 integer i;
 initial begin
@@ -33,20 +36,21 @@ initial begin
 end
 
 initial 
-	$readmemh("input.txt", din_mem);
+	$readmemh("input_1234.txt", din_mem);
         
 
-always @(posedge aclk) 
+always @(*) 
     din <= din_mem[rdaddr];
 
 always #(CLK_PERIOD/2) aclk = ~aclk;
 
-pe_controller #(2**L_RAM_SIZE,L_RAM_SIZE) UUT(
+pe_controller #(.MATRIX_SIZE(MATRIX_SIZE), .VECTOR_SIZE(VECTOR_SIZE), .L_RAM_SIZE(L_RAM_SIZE)) UUT(
     .start(start),
     .aclk(aclk),
     .areset_n(aresetn),
     .rddata(din),
     .done(done),
+    .write(write),
     .raddr(rdaddr),
     .wrdata(wrdata)
     );

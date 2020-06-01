@@ -18,8 +18,7 @@ module my_pe #(
         // computation result
         output dvalid,
         output [31:0] dout
-    );
-    
+    ); 
     
    (* ram_style = "block" *) reg [31:0] peram [0:2**L_RAM_SIZE - 1];  // local register
    
