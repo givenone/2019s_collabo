@@ -24,7 +24,6 @@ module pe_controller #(
     wire valid;
     wire dvalid;
     wire [31:0] dout [0 : MATRIX_SIZE-1];
-    
     wire [31:0] answer [0 : MATRIX_SIZE - 1];
 
     // global mem
@@ -95,12 +94,12 @@ module pe_controller #(
     // ** IMPORTANT : LOAD : one cycle for read data , one cycle for write data. 
     // if counter[0] == 0 -> read && counter[0] == 1 -> write
     
-    assign addr = (present_state == LOAD) ? counter[L_RAM_SIZE:1] % VECTOR_SIZE : // applicable for both global, local RAM
-    (present_state == CALC) ? counter / VECTOR_SIZE : 1'd0; //counter[31:4] : 1'd0;
+    assign addr = (present_state == LOAD) ? (counter/2) % VECTOR_SIZE : // applicable for both global, local RAM
+    (present_state == CALC) ? counter / 16 : 1'd0; //counter[31:4] : 1'd0;
     // addr only indicate address among vecotor
     
-    assign index = (present_state == LOAD) ? counter[L_RAM_SIZE:1] / VECTOR_SIZE :
-    (present_state == WRITE) ? counter[L_RAM_SIZE-1 : 0] : 1'd0;
+    assign index = (present_state == LOAD) ? (counter/2) / VECTOR_SIZE :
+    (present_state == WRITE) ? counter : 1'd0;
     // index of pe module (matrix row)
     
     // raddr : address for 2 RAMs

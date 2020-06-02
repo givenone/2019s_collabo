@@ -223,8 +223,8 @@ Compiling architecture rtl of entity floating_point_v7_1_7.delay [\delay(width=3
 Compiling architecture xilinx of entity floating_point_v7_1_7.floating_point_v7_1_7_viv [\floating_point_v7_1_7_viv(c_xde...]
 Compiling architecture xilinx of entity floating_point_v7_1_7.floating_point_v7_1_7 [\floating_point_v7_1_7(c_xdevice...]
 Compiling architecture floating_point_0_arch of entity xil_defaultlib.floating_point_0 [floating_point_0_default]
-Compiling module xil_defaultlib.my_pe
-Compiling module xil_defaultlib.pe_controller(MATRIX_SIZE=4,L_RA...
+Compiling module xil_defaultlib.my_pe(L_RAM_SIZE=16)
+Compiling module xil_defaultlib.pe_controller(VECTOR_SIZE=64,MAT...
 Compiling module xil_defaultlib.tb
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot tb_behav
