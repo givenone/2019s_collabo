@@ -1,0 +1,86 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Fri Jun 12 18:36:01 2020
+# Process ID: 732
+# Current directory: C:/Users/DAMOTORY/Downloads/term0
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent9956 C:\Users\DAMOTORY\Downloads\term0\term0.xpr
+# Log file: C:/Users/DAMOTORY/Downloads/term0/vivado.log
+# Journal file: C:/Users/DAMOTORY/Downloads/term0\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/DAMOTORY/Downloads/term0/term0.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2018.3/data/ip'.
+open_project: Time (s): cpu = 00:00:16 ; elapsed = 00:00:09 . Memory (MB): peak = 867.418 ; gain = 39.961
+update_compile_order -fileset sources_1
+launch_simulation
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/DAMOTORY/Downloads/term0/term0.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'C:/Xilinx/Vivado/2018.3/data/xsim/xsim.ini' copied to run dir:'C:/Users/DAMOTORY/Downloads/term0/term0.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_pe_controller' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/DAMOTORY/Downloads/term0/term0.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_pe_controller_vlog.prj"
+"xvhdl --incr --relax -prj tb_pe_controller_vhdl.prj"
+run_program: Time (s): cpu = 00:00:01 ; elapsed = 00:00:07 . Memory (MB): peak = 867.418 ; gain = 0.000
+INFO: [USF-XSim-69] 'compile' step finished in '7' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/DAMOTORY/Downloads/term0/term0.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto ca4ed082b50d4372ad51349071b721df --incr --debug typical --relax --mt 2 -L xbip_utils_v3_0_9 -L axi_utils_v2_0_5 -L xbip_pipe_v3_0_5 -L xbip_dsp48_wrapper_v3_0_4 -L xbip_dsp48_addsub_v3_0_5 -L xbip_dsp48_multadd_v3_0_5 -L xbip_bram18k_v3_0_5 -L mult_gen_v12_0_14 -L floating_point_v7_1_7 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_pe_controller_behav xil_defaultlib.tb_pe_controller xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+run_program: Time (s): cpu = 00:00:02 ; elapsed = 00:00:33 . Memory (MB): peak = 867.418 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '33' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/DAMOTORY/Downloads/term0/term0.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_pe_controller_behav -key {Behavioral:sim_1:Functional:tb_pe_controller} -tclbatch {tb_pe_controller.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source tb_pe_controller.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+Warning: WARNING : aresetn must be asserted or deasserted for a minimum of 2 cycles
+Time: 25 ns  Iteration: 1  Process: /tb_pe_controller/UUT/pe[0].my_pe/MAC/U0/i_synth/has_aresetn/check_reset  File: /wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/floating_point_v7_1/hdl/floating_point_v7_1_vh_rfs.vhd
+Warning: WARNING : aresetn must be asserted or deasserted for a minimum of 2 cycles
+Time: 25 ns  Iteration: 1  Process: /tb_pe_controller/UUT/pe[1].my_pe/MAC/U0/i_synth/has_aresetn/check_reset  File: /wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/floating_point_v7_1/hdl/floating_point_v7_1_vh_rfs.vhd
+Warning: WARNING : aresetn must be asserted or deasserted for a minimum of 2 cycles
+Time: 25 ns  Iteration: 1  Process: /tb_pe_controller/UUT/pe[2].my_pe/MAC/U0/i_synth/has_aresetn/check_reset  File: /wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/floating_point_v7_1/hdl/floating_point_v7_1_vh_rfs.vhd
+Warning: WARNING : aresetn must be asserted or deasserted for a minimum of 2 cycles
+Time: 25 ns  Iteration: 1  Process: /tb_pe_controller/UUT/pe[3].my_pe/MAC/U0/i_synth/has_aresetn/check_reset  File: /wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/floating_point_v7_1/hdl/floating_point_v7_1_vh_rfs.vhd
+Warning: WARNING : aresetn must be asserted or deasserted for a minimum of 2 cycles
+Time: 35 ns  Iteration: 1  Process: /tb_pe_controller/UUT/pe[0].my_pe/MAC/U0/i_synth/has_aresetn/check_reset  File: /wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/floating_point_v7_1/hdl/floating_point_v7_1_vh_rfs.vhd
+Warning: WARNING : aresetn must be asserted or deasserted for a minimum of 2 cycles
+Time: 35 ns  Iteration: 1  Process: /tb_pe_controller/UUT/pe[1].my_pe/MAC/U0/i_synth/has_aresetn/check_reset  File: /wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/floating_point_v7_1/hdl/floating_point_v7_1_vh_rfs.vhd
+Warning: WARNING : aresetn must be asserted or deasserted for a minimum of 2 cycles
+Time: 35 ns  Iteration: 1  Process: /tb_pe_controller/UUT/pe[2].my_pe/MAC/U0/i_synth/has_aresetn/check_reset  File: /wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/floating_point_v7_1/hdl/floating_point_v7_1_vh_rfs.vhd
+Warning: WARNING : aresetn must be asserted or deasserted for a minimum of 2 cycles
+Time: 35 ns  Iteration: 1  Process: /tb_pe_controller/UUT/pe[3].my_pe/MAC/U0/i_synth/has_aresetn/check_reset  File: /wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/floating_point_v7_1/hdl/floating_point_v7_1_vh_rfs.vhd
+xsim: Time (s): cpu = 00:00:15 ; elapsed = 00:00:20 . Memory (MB): peak = 867.418 ; gain = 0.000
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_pe_controller_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:21 ; elapsed = 00:01:06 . Memory (MB): peak = 867.418 ; gain = 0.000
+run 2000 us
