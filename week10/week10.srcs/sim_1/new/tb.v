@@ -1,20 +1,29 @@
 module tb();
 
-parameter L_RAM_SIZE = 16;
-parameter VECTOR_SIZE = 64;
-parameter MATRIX_SIZE = 64;
+parameter L_RAM_SIZE = 3;
+parameter VECTOR_SIZE = 8;
+parameter MATRIX_SIZE = 8;
 parameter CLK_PERIOD = 2;
 
 reg aclk;
 reg aresetn;
 reg start;
 reg [31:0] din;
+
+wire [31:0] temp_addr;
+wire [31:0] temp_index;
+wire we_global;
+
+
 wire done;
 wire write;
-wire [L_RAM_SIZE:0] rdaddr;
+wire [31:0] rdaddr;
 wire [31:0] wrdata;
 //input data 
 reg [31:0] din_mem [(MATRIX_SIZE+1) * VECTOR_SIZE -1:0];
+
+
+
 
 integer i;
 initial begin
@@ -30,8 +39,7 @@ initial begin
     
     #(CLK_PERIOD*5);
     start = 1;
-    #(CLK_PERIOD * 5);
-    start = 0;
+
 
 // test for multiple times.
    
@@ -39,7 +47,7 @@ end
 
 initial 
 	$readmemh("input_64.txt", din_mem);
-        
+/*
 always @(negedge done) begin
     #(CLK_PERIOD*5);
     aresetn<=0;
@@ -49,12 +57,11 @@ always @(negedge done) begin
     
     #(CLK_PERIOD*5);
     start = 1;
-    #(CLK_PERIOD * 5);
-    start = 0;
+
     
     end
 
- 
+ */
 
 always @(*) 
     din <= din_mem[rdaddr];
@@ -69,6 +76,10 @@ pe_controller #(.MATRIX_SIZE(MATRIX_SIZE), .VECTOR_SIZE(VECTOR_SIZE), .L_RAM_SIZ
     .done(done),
     .write(write),
     .raddr(rdaddr),
-    .wrdata(wrdata)
+    .wrdata(wrdata),
+    
+    .temp_addr(temp_addr),
+    .temp_index(temp_index),
+    .we_globall(we_global)
     );
 endmodule
