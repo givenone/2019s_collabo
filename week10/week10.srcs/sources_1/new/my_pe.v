@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 module my_pe #(
-        parameter L_RAM_SIZE = 6
+        parameter VECTOR_SIZE = 16
     )
     (
         // clk/reset
@@ -20,7 +20,7 @@ module my_pe #(
         output [31:0] dout
     ); 
     
-   (* ram_style = "block" *) reg [31:0] peram [0:2**L_RAM_SIZE - 1];  // local register
+   (* ram_style = "block" *) reg [31:0] peram [0:VECTOR_SIZE-1];  // local register
    
     reg [31:0] psum;
     reg [31:0] weight;

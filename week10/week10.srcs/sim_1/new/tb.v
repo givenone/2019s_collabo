@@ -1,8 +1,8 @@
 module tb();
 
-parameter L_RAM_SIZE = 3;
-parameter VECTOR_SIZE = 8;
-parameter MATRIX_SIZE = 8;
+parameter L_RAM_SIZE = 6;
+parameter VECTOR_SIZE = 16;
+parameter MATRIX_SIZE = 16;
 parameter CLK_PERIOD = 2;
 
 reg aclk;
@@ -46,7 +46,7 @@ initial begin
 end
 
 initial 
-	$readmemh("input_64.txt", din_mem);
+	$readmemh("input_32.txt", din_mem);
 /*
 always @(negedge done) begin
     #(CLK_PERIOD*5);

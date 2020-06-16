@@ -161,7 +161,7 @@ module pe_controller #(
     genvar k;
     generate 
         for(k = 0; k < MATRIX_SIZE; k=k+1) begin
-              my_pe #(.L_RAM_SIZE(L_RAM_SIZE)) mac(
+              my_pe #(.VECTOR_SIZE(VECTOR_SIZE)) mac(
                 .aclk(aclk),
                 .aresetn(re),
                 .ain(ain[k]),

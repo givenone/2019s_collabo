@@ -404,10 +404,9 @@
 	assign BRAM_EN = 1'b1;
     assign BRAM_RST = 1'b0;
 	
-	
-	parameter L_RAM_SIZE = 3;
-    parameter VECTOR_SIZE = 8;
-    parameter MATRIX_SIZE = 8;
+
+    parameter VECTOR_SIZE = 16;
+    parameter MATRIX_SIZE = 16;
     
     wire done;
     wire write;
@@ -429,7 +428,7 @@
     
     wire magic_code = (slv_reg0 == 32'h5555);
 
-    pe_controller #(.MATRIX_SIZE(MATRIX_SIZE), .VECTOR_SIZE(VECTOR_SIZE), .L_RAM_SIZE(L_RAM_SIZE)) UUT(
+    pe_controller #(.MATRIX_SIZE(MATRIX_SIZE), .VECTOR_SIZE(VECTOR_SIZE)) UUT(
     .start(magic_code),
     .aclk(S_AXI_ACLK),
     .areset_n(S_AXI_ARESETN),

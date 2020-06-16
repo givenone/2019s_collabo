@@ -2,8 +2,7 @@
 
 module pe_controller #(
         parameter VECTOR_SIZE = 16,
-        parameter MATRIX_SIZE = 16, 
-        parameter L_RAM_SIZE = 4
+        parameter MATRIX_SIZE = 16
         )
     (
         input start,
@@ -154,7 +153,7 @@ module pe_controller #(
     genvar k;
     generate 
         for(k = 0; k < MATRIX_SIZE; k=k+1) begin
-              my_pe #(.L_RAM_SIZE(L_RAM_SIZE)) mac(
+              my_pe #(.VECTOR_SIZE(VECTOR_SIZE)) mac(
                 .aclk(aclk),
                 .aresetn(re),
                 .ain(ain[k]),
